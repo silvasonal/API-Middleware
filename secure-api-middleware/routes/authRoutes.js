@@ -11,7 +11,16 @@ router.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await useModel.registerUser(username, password);
-    res.status(201).json({ message: 'User created successfully', user });
+
+    // Check if the registration was successful or not
+    if (user.error) {
+      return res.status(401).json({ error: user.error });
+    }
+
+    res.status(201).json({ 
+      message: 'User created successfully', user 
+    });
+
   } catch (error) {
     res.status(500).json({ error: 'Error registering user' });
   }
@@ -25,7 +34,7 @@ router.post('/login', async (req, res) => {
 
     // Check if the login was successful or not
     if (user.error) {
-      return res.status(400).json({ error: user.error });
+      return res.status(401).json({ error: user.error });
     }
 
     res.status(200).json({
@@ -43,10 +52,10 @@ router.post('/login', async (req, res) => {
 // Get Country Data Route
 router.get('/country/:name', authenticateToken, async (req, res) => {
   
-  const countryName = req.params.name 
+  const countryCode = req.params.name 
 
   try {
-    const countryData = await countryService.fetchCountry(countryName);
+    const countryData = await countryService.fetchCountry(countryCode);
 
     if (countryData.error) {
       return res.status(404).json({ error: countryData.error });

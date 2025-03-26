@@ -20,8 +20,9 @@ const Register = () => {
                 navigate('/login');
             } , 1500);
         } catch (error) {
-            console.error('Registration failed', error);
-            setSnackbar({ open: true, message: 'Registration failed. Please try again.', severity: 'error' });
+            // console.error('Registration failed', error);
+            console.log("error",  error.response.data.error );
+            setSnackbar({ open: true, message: error.response.data.error, severity: 'error' });
         }
     };
 
@@ -36,6 +37,7 @@ const Register = () => {
                     value={username} 
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter username"
+                    required={true}
                 />
                 <TextInput
                     id="reg_password"
@@ -44,6 +46,7 @@ const Register = () => {
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
+                    required={true}
                 />
 
                 <button id='reg_btn' className="form-button" onClick={handleRegister}>Register</button>

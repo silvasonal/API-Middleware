@@ -25,23 +25,21 @@ body {
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
   margin-bottom: 15px; 
 }
 
 .input-group label {
   font-weight: bold;
-  min-width:100px;
-  text-align: center;
+  display:block; 
+  margin-bottom: 5px; 
+  text-align: left; 
 }
 
 .input-group input {
   padding: 10px;
-  border: 1px solid;
+  border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
-
 }
 
 .form-button {
@@ -59,3 +57,60 @@ body {
 .form-button:hover {
   background-color: #0056b3;
 }
+
+.select-box {
+  margin-top: 20px;
+  width: 300px;
+  margin-bottom: 20px;
+  z-index: 1000;  
+}
+
+.ag-theme-alpine {
+  position: relative;
+  z-index: 0;  
+}
+
+.ag-theme-alpine .ag-cell {
+  border-right: 1px solid #ccc !important;
+}
+
+.ag-theme-alpine .ag-row {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.ag-theme-balham .ag-root {
+  border: 1px solid #ccc;
+}
+
+.ag-theme-alpine .ag-header-cell {
+  border-right: 1px solid #ccc;
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  position: relative;  
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.logout-button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 30px; 
+}
+
+.logout-button:hover {
+  background-color: #ff1a1a;
+}
+

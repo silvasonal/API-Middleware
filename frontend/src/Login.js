@@ -24,7 +24,7 @@ const Login = ({ setToken }) => {
           }, 1500);
         } catch (error) {
             console.error('Login failed', error);
-            setSnackbar({ open: true, message: 'Login failed. Please try again.', severity: 'error' });
+            setSnackbar({ open: true, message: error.response.data.error, severity: 'error' });
         }
     };
 
@@ -39,6 +39,7 @@ const Login = ({ setToken }) => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Enter username"
+                    required={true}
                 />
                 <TextInput
                     id="log_password"
@@ -47,6 +48,7 @@ const Login = ({ setToken }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
+                    required={true}
                 />
                 <button id='login_btn' className="form-button" onClick={handleLogin}>Login</button>
 
